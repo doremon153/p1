@@ -4,42 +4,43 @@
   <meta charset="UTF-8">
   <title>Course Registration Form</title>
   <script>
-    function validateForm() {
-      const usn = document.forms[0].usn.value;
-      const contact = document.forms[0].contact.value;
-      const usnPattern = /^\d[a-zA-Z]{2}\d{2}[a-zA-Z]{2}\d{3}$/; 
-      const contactPattern = /^\d{10}$/; 
+    function validation() {
+      let usn = document.getElementById('usn').value;
+      let contact = document.getElementById('contact').value;
+
+      let usnPattern = /^\d[a-zA-Z]{2}\d{2}[a-zA-Z]{2}\d{3}$/;  // Example: 1DS20CS001
+      let contactPattern = /^\d{10}$/;
+
       if (!usnPattern.test(usn)) {
         alert("Invalid USN format. Please enter a valid USN in the format: DCCDDCCDDD (e.g., 1DS20CS001).");
         return false;
       }
+
       if (!contactPattern.test(contact)) {
         alert("Please enter a valid 10-digit mobile number.");
         return false;
       }
-      return true; 
+
+      return true;
     }
   </script>
 </head>
 <body>
-  <div style="text-align:center;">
-    <img src="logo.png" alt="Department Header" width="65%">
-  </div>
-
-  <div style="display:flex; justify-content:center; align-items:center; flex-direction:column;">
-    <h2><u>Course Registration Form for the academic year 2024 - 2025</u></h2>
-    <form method="post" action="" onsubmit="return validateForm();">
+  <center><img src="logo.png" alt="Department Header" width="65%"></center>
+ <center> <div >
+    <h2><u>Course Registration Form</u></h2>
+    <form onsubmit="return validation();">
       <table>
         <tr><td>Student Name:</td><td><input type="text" name="student_name" required></td></tr>
-        <tr><td>Student USN:</td><td><input type="text" name="usn" required></td></tr>
+        <tr><td>Student USN:</td><td><input type="text" name="usn" id="usn" required></td></tr>
         <tr><td>Program Name:</td><td><input type="text" name="program" required></td></tr>
         <tr><td>Semester:</td><td><input type="text" name="semester" required></td></tr>
         <tr><td>Section:</td><td><input type="text" name="section" required></td></tr>
         <tr><td>Email:</td><td><input type="email" name="email" required></td></tr>
-        <tr><td>Contact:</td><td><input type="tel" name="contact" required></td></tr>
-        <tr><td colspan="2" style="text-align: center;"><input type="submit" value="Submit"></td></tr>
+        <tr><td>Contact:</td><td><input type="tel" name="contact" id="contact" required></td></tr>
+        <tr><td ><input type="submit"></td></tr>
       </table>
     </form>
-  </div>
+  </div></center>
 </body>
 </html>
